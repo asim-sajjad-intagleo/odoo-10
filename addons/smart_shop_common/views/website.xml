@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Load website assets -->
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Website Frontend Assets">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/css" href="/smart_shop_common/static/src/css/website.css"/>
+        </xpath>
+    </template>
+
+    <!-- Replace less variables -->
+    <template id="less_helpers" inherit_id="web.less_helpers">
+        <xpath expr="//link[@href='/web/static/src/less/variables.less']" position="after">
+            <link rel="stylesheet" type="text/css" href="/smart_shop_common/static/src/less/variables.less"/>
+        </xpath>
+    </template>
+
+    <!-- Remove Processed by Ogone -->
+    <template id="cart" inherit_id="website_sale.cart" name="Shopping Cart">
+        <xpath expr="((//div[@id='right_column']/ul)[2]/li)[2]" position="replace"/>
+    </template>
+
+    <!-- Override Powered by Odoo -->
+    <template id="layout_footer_copyright" inherit_id="website.layout" name="Footer Copyright" priority="9999">
+        <xpath expr="//footer/div[@class='container mt16 mb8']" position="replace">
+            <div class="container mt16 mb8">
+                <div class="pull-right" t-ignore="true" t-if="not editable">
+                    Powered by <a class="label label-danger" href="https://digitaltown.com">DigitalTown</a>.
+                </div>
+                <div class="pull-left text-muted">
+                    Copyright &amp;copy;
+                    <span t-field="res_company.name">DigitalTown</span>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Replace login form with DigitalTown SSO button -->
+    <template id="login" inherit_id="web.login" name="Login" priority="9999">
+        <xpath expr="//form" position="replace">
+            <div id="digitaltown-sso-container">
+                <img src="/smart_shop_create_store/static/img/shop.png" alt="DigitalTown"/>
+                <div t-foreach="providers" t-as="p">
+                    <a t-att-href="p['auth_link']" class="btn btn-link">
+                        <i t-att-class="p['css_class']"/>
+                        <t t-esc="p['body']"/>
+                    </a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Change sign in redirect -->
+    <template id="show_sign_in" customize_show="True" inherit_id="website.layout" name="Show Sign In" priority="9999">
+        <xpath expr="//a[@t-attf-href='/web/login']" position="replace">
+            <a t-attf-href="/web/login?redirect=%2F">
+                <b>Sign in</b>
+            </a>
+        </xpath>
+    </template>
+
+    <!-- Add address and opening hours in footer -->
+    <template id="footer_default" inherit_id="website.footer_default" customize_show="True" name="Automatic Footer">
+        <xpath expr="((//ul[@class='list-unstyled'])[3]/li)[2]" position="after">
+            <li t-ignore="true">
+                <i class="fa fa-map-marker"/>
+                <span t-field="res_company.street"/>
+            </li>
+            <li t-ignore="true">
+                <i class="fa fa-clock-o"/>
+                <span t-field="res_company.opening_hours"/>
+            </li>
+        </xpath>
+    </template>
+
+    <!-- Remove HTML Editor and Install Apps from header -->
+    <template id="user_navbar" inherit_id="website.user_navbar">
+        <xpath expr="//li[@id='html_editor']" position="replace"/>
+        <xpath expr="//li[@id='install_apps']" position="replace"/>
+    </template>
+
+</odoo>

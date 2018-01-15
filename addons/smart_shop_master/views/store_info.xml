@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="product_inherit_form">
+            <field name="name">product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+              <field name="arch" type="xml">
+                  <xpath expr="//form/sheet/notebook/page[2]" position="after">
+                      <page string="Store Information">
+                  <group>
+                <field name="city_name"/>
+                       <field name="longitude"/>
+                       <field name="latitude"/>
+                       <field name="site_id"/>
+                       <field name="state_id" placeholder="Select State"/>
+                       <field name="country_id" placeholder="Select Country"/>
+
+                  </group>
+                      </page>
+              </xpath>
+              </field>
+        </record>
+
+
+</odoo>

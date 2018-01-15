@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Client XML-RPC user -->
+        <record id="client_xmlrpc_user" model="ir.config_parameter">
+            <field name="key">client_xmlrpc_user</field>
+            <field name="value">xmlrpc</field>
+        </record>
+
+        <!-- Client XML-RPC password -->
+        <record id="client_xmlrpc_pwd" model="ir.config_parameter">
+            <field name="key">client_xmlrpc_pwd</field>
+            <field name="value">0</field>
+        </record>
+
+        <!-- Client XML-RPC protocol -->
+        <record id="client_xmlrpc_protocol" model="ir.config_parameter">
+            <field name="key">client_xmlrpc_protocol</field>
+            <field name="value">http</field>
+        </record>
+
+        <!-- Client XML-RPC host -->
+        <record id="client_xmlrpc_host" model="ir.config_parameter">
+            <field name="key">client_xmlrpc_host</field>
+            <field name="value">localhost</field>
+        </record>
+
+        <!-- Client XML-RPC port -->
+        <record id="client_xmlrpc_port" model="ir.config_parameter">
+            <field name="key">client_xmlrpc_port</field>
+            <field name="value">8069</field>
+        </record>
+
+        <!-- Domain name that will be used to create new instances -->
+        <record id="domain_name" model="ir.config_parameter">
+            <field name="key">domain_name</field>
+            <field name="value">nashville.shop</field>
+        </record>
+
+        <!-- Name of the postgres database template that will be used to create new instances -->
+        <record id="database_template_name" model="ir.config_parameter">
+            <field name="key">database_template_name</field>
+            <field name="value">smart_shop_template</field>
+        </record>
+
+        <!-- Name of the nginx template that will be used to create new instances -->
+        <record id="nginx_config_template_name" model="ir.config_parameter">
+            <field name="key">nginx_config_template_name</field>
+            <field name="value">smart_shop_template</field>
+        </record>
+
+        <!-- Default country ID -->
+        <record id="default_country_id" model="ir.config_parameter">
+            <field name="key">default_country_id</field>
+            <field name="value">0</field>
+        </record>
+
+    </data>
+</odoo>

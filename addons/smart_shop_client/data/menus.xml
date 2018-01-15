@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="invisible" model="res.groups">
+        <field name="name">Invisible</field>
+    </record>
+
+    <!-- Hide Discuss -->
+    <record model="ir.ui.menu" id="mail.mail_channel_menu_root_chat">
+        <field name="groups_id" eval="[(6,0,[ref('invisible')])]"/>
+    </record>
+
+    <!-- Hide Sales -->
+    <record model="ir.ui.menu" id="sales_team.menu_base_partner">
+        <field name="groups_id" eval="[(6,0,[ref('invisible')])]"/>
+    </record>
+
+    <!-- Hide Account -->
+    <record model="ir.ui.menu" id="account.menu_finance">
+        <field name="groups_id" eval="[(6,0,[ref('invisible')])]"/>
+    </record>
+
+</odoo>
